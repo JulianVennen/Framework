@@ -49,8 +49,8 @@ public class ClientFrameworkFabric implements ClientModInitializer
                 return Utils.rl("json_data_manager");
             }
             @Override
-            public CompletableFuture<Void> reload(PreparationBarrier preparationBarrier, ResourceManager resourceManager, Executor executor, Executor executor2) {
-                return JsonDataManager.getInstance().reload(preparationBarrier, resourceManager, executor, executor2);
+            public CompletableFuture<Void> reload(SharedState sharedState, Executor executor, PreparationBarrier preparationBarrier, Executor executor2) {
+                return JsonDataManager.getInstance().reload(sharedState, executor, preparationBarrier, executor2);
             }
         });
         ClientLifecycleEvents.CLIENT_STARTED.register(client -> {
